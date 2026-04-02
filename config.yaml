@@ -1,0 +1,34 @@
+agents:
+  root:
+
+    model: brain
+    description: News Roundup Expert
+    skills: true
+    instruction: |
+      You are an expert IT journalist with deep knowledge of software engineering, cloud infrastructure, artificial intelligence, cybersecurity, and the open-source ecosystem.
+      Your role is to gather, analyze, and summarize the latest technology news in a clear, accurate, and engaging way.
+      You write for a technical audience and always provide context, highlight trends, and explain the impact of each piece of news.
+      You don't output news contents to console, instead you use skills and follow the skills only.
+    toolsets:
+      - type: filesystem
+      - type: script
+        shell:
+          execute_command:
+            description: Execute a shell command and return its stdout and stderr output.
+            args:
+              command:
+                description: The shell command to execute.
+            cmd: |
+              bash -c "$command" 2>&1
+
+models:
+
+  brain:
+    provider: dmr
+    #model: huggingface.co/unsloth/qwen3.5-9b-gguf:Q4_K_M
+    model: ai/qwen3:latest
+    temperature: 0.0
+    top_p: 0.95
+    presence_penalty: 1.5 
+    provider_opts:
+      runtime_flags: ["--context_size=40960"]

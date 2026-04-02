@@ -1,0 +1,47 @@
+# docker compose run --rm --build news-roundup
+# or
+# docker compose build --no-cache demo && docker compose run --rm --build news-roundup
+
+services:
+  news-roundup:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    stdin_open: true
+    tty: true
+    command: docker-agent run /workspace/config.yaml
+    volumes:
+      - ./config.yaml:/workspace/config.yaml:ro
+      - ./.agents:/workspace/.agents:ro
+      - ./data:/workspace/data
+    working_dir: /workspace
+
+    env_file:
+      - .env
+
+    environment:
+      TELEMETRY_ENABLED: "false"
+
+    models:
+      - qwen3-8b
+      #jan-nano-128k:
+      #lucy-128k:
+      # qwen3.5-9b:
+
+models:
+
+  qwen3-8b:
+    model: ai/qwen3:latest
+    context_size: 40960
+
+  # jan-nano-128k:
+  #   model: huggingface.co/menlo/jan-nano-128k-gguf:Q4_K_M
+  #   context_size: 65536
+
+  # lucy-128k:
+  #   model: huggingface.co/menlo/lucy-128k-gguf:Q4_K_M
+  #   context_size: 65536
+
+  # qwen3.5-9b:
+  #   model: dmr/ai/qwen3.5:9B-UD-Q4_K_XL
+  #   context_size: 131072
