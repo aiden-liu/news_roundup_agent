@@ -1,12 +1,12 @@
 ---
 name: news-roundup
-description: search the news using Brave News Search API with a query as argument. Use this skill when the user asks to search for recent news or current events.
+description: search the news using Tavily News Search API with a query as argument. Use this skill when the user asks to search for recent news or current events.
 ---
 # News Roundup
 
 ## Purpose
 
-Generate a comprehensive Markdown news report on a given topic (default: "small ai local models").
+Generate a comprehensive Markdown news report on a given topic (default: "artificial intelligence, the open-source ecosystem, data engineering/modelling, software engineering, cloud infrastructure, cybersecurity").
 
 ## Steps to follow
 
