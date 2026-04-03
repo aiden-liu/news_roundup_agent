@@ -15,13 +15,17 @@ ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US.UTF-8
 ENV LC_COLLATE=C
 ENV LC_CTYPE=en_US.UTF-8
+ENV TZ=Pacific/Auckland
 
 # ------------------------------------
 # Install Tools
 #------------------------------------
 RUN <<EOF
 apt-get update 
-apt-get install -y wget curl
+apt-get install -y wget curl tzdata
+ln -snf /usr/share/zoneinfo/$TZ /etc/localtime
+echo $TZ > /etc/timezone
+dpkg-reconfigure -f noninteractive tzdata
 apt-get clean autoclean
 apt-get autoremove --yes
 rm -rf /var/lib/{apt,dpkg,cache,log}/

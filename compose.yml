@@ -20,7 +20,7 @@ services:
       - .env
 
     environment:
-      TELEMETRY_ENABLED: "false"
+      - TELEMETRY_ENABLED=false
 
     models:
       - qwen3-8b
