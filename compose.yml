@@ -43,5 +43,5 @@ models:
   #   context_size: 65536
 
   # qwen3.5-9b:
-  #   model: dmr/ai/qwen3.5:9B-UD-Q4_K_XL
+  #   model: ai/qwen3.5:9B-UD-Q4_K_XL
   #   context_size: 131072

@@ -18,7 +18,7 @@ Generate a comprehensive Markdown news report on a given topic (default: "artifi
 curl -s -X POST https://api.tavily.com/search \
   -H 'Content-Type: application/json' \
   -H "Authorization: Bearer ${TAVILY}" \
-  -d "{\"query\": \"$ARGUMENTS_REST\", \"search_depth\": \"advanced\", \"max_results\": 6, \"time_range\": \"week\"}"
+  -d '{"query": "$ARGUMENTS_REST", "search_depth": "advanced", "max_results": 3, "time_range": "week"}'
 ```
 
 ### Step 2 — Enrich each article
@@ -31,7 +31,7 @@ For each article returned in Step 1, use the below command with the article URL 
 curl -s -X POST https://api.tavily.com/search \
   -H 'Content-Type: application/json' \
   -H "Authorization: Bearer ${TAVILY}" \
-  -d "{\"query\": \"$ARTICLE_URL\", \"max_results\": 5}"
+  -d '{"query": "$ARTICLE_URL", "max_results": 4}'
 ```
 
 
